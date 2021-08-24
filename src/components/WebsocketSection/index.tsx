@@ -1,5 +1,7 @@
 import useWebsocket from "../../hooks/useWebsocket";
+import { SpinnerScoped } from "../common/Spinner";
 import { Title } from "../common/Title";
+import { Price } from "./WebsocketSection.style";
 
 const WebsocketSection = ({ currency }: { currency: string }) => {
   const websocket = useWebsocket(currency);
@@ -7,9 +9,9 @@ const WebsocketSection = ({ currency }: { currency: string }) => {
   return (
     <Title>
       Price Now:{" "}
-      <strong style={{ color: websocket.color }}>
-        {websocket.price === 0 ? "loading..." : websocket.price}
-      </strong>
+      <Price style={{ color: websocket.color }}>
+        {websocket.price === 0 ? <SpinnerScoped /> : websocket.price}
+      </Price>
     </Title>
   );
 };
