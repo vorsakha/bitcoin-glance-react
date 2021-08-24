@@ -4,8 +4,12 @@ import { Banner } from "../common/Wrapper";
 const Navigation = () => {
   return (
     <Banner>
-      <ButtonLink to="/">USD</ButtonLink>
-      <ButtonLink to="/brl">BRL</ButtonLink>
+      <ButtonLink to="/" activeStyle={{ backgroundColor: "#ca7900" }}>
+        USD
+      </ButtonLink>
+      <ButtonLink to="/brl" activeStyle={{ backgroundColor: "#ca7900" }}>
+        BRL
+      </ButtonLink>
     </Banner>
   );
 };
