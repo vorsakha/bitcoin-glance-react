@@ -19,22 +19,27 @@ const useWebsocket = (currency: string) => {
   const webSocket = currency === "usd" ? binanceUSD : binanceBRL;
 
   useEffect(() => {
+    let mounted = true;
+
     // websocket call
     webSocket.onmessage = (event) => {
       const jsonData = JSON.parse(event.data);
       const price: number = parseFloat(jsonData.p);
 
-      setPrice((last) => ({
-        price: parseFloat(price.toFixed(2)),
-        color: handlePriceColor(last.price, price),
-        currency: currency,
-      }));
+      if (mounted) {
+        setPrice((last) => ({
+          price: parseFloat(price.toFixed(2)),
+          color: handlePriceColor(last.price, price),
+          currency: currency,
+        }));
+      }
     };
 
     return () => {
-      webSocket.close();
+      //   webSocket.close();
+      mounted = false;
     };
-  }, [currency, webSocket]);
+  });
 
   return priceObj;
 };
