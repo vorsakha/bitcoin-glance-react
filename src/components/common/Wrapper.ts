@@ -6,8 +6,22 @@ export const Wrapper = styled.div`
 `;
 export const Banner = styled.div`
   width: 100%;
-  margin: 0 0 1rem 0;
+  padding: 0 0 1rem 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+export const WrapperMarginY = styled.div`
+  margin: 1rem 0;
+`;
+export const CenterWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
