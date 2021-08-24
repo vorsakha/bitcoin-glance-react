@@ -1,6 +1,5 @@
-import Wrapper from "../common/Wrapper";
-
 // Styled Components
+import { Wrapper } from "../common/Wrapper";
 import { Description, Logo, LogoContainer, LogoLink } from "./Header.styles";
 
 const Header = () => {

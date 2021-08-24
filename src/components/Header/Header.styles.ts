@@ -16,6 +16,7 @@ export const Logo = styled.h1`
   font-weight: 700;
   font-size: 3rem;
   text-align: center;
+  font-style: italic;
 
   @media screen and (min-width: 768px) {
     font-size: 4rem;
@@ -23,7 +24,7 @@ export const Logo = styled.h1`
 `;
 export const Description = styled.p`
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
   margin-top: 1rem;
 `;
