@@ -12,13 +12,20 @@ const GlobalStyles = createGlobalStyle`
         color: #333;
     }
 
-   
-a {
-  color: #ff9900;
-}
-a:hover {
-  color: #ca7900;
-}
+    a {
+      color: #ff9900;
+    }
+    a:hover {
+      color: #ca7900;
+    }
+
+    p {
+      margin: 1rem 0;
+    }
+
+    h3 {
+      margin-top: 2rem;
+    }
 `;
 
 export default GlobalStyles;
