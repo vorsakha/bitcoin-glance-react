@@ -7,6 +7,11 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 3rem 0;
+  padding-bottom: 1rem;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 3rem;
+  }
 `;
 export const LogoLink = styled(Link)`
   text-decoration: none;
