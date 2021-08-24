@@ -1,8 +1,9 @@
 import useRest from "../../hooks/useRest";
+import { Space, Ubuntu } from "../common/Font";
 import { SpinnerScoped } from "../common/Spinner";
-import { Title, TitleH3 } from "../common/Title";
+import { Title } from "../common/Title";
 import { WrapperMarginY } from "../common/Wrapper";
-import { Glance } from "./RESTSection.style";
+import { GlanceWrapper } from "./RESTSection.style";
 
 const RESTSection = ({ currency }: { currency: string }) => {
   const four = useRest(currency);
@@ -13,24 +14,53 @@ const RESTSection = ({ currency }: { currency: string }) => {
     <WrapperMarginY>
       <Title>Market Glance:</Title>
 
-      <TitleH3>
-        Short Term{" - "}
-        <Glance style={{ color: four.signalObj?.color }}>
-          {four.loading ? <SpinnerScoped /> : four.signalObj?.signal}
-        </Glance>
-      </TitleH3>
-      <TitleH3>
-        Medium Term{" - "}
-        <Glance style={{ color: day.signalObj?.color }}>
-          {day.loading ? <SpinnerScoped /> : day.signalObj?.signal}
-        </Glance>
-      </TitleH3>
-      <TitleH3>
-        Long Term{" - "}
-        <Glance style={{ color: week.signalObj?.color }}>
-          {week.loading ? <SpinnerScoped /> : week.signalObj?.signal}
-        </Glance>
-      </TitleH3>
+      <GlanceWrapper style={{ border: `1px solid ${four.signalObj?.border}` }}>
+        <Ubuntu>Short Term</Ubuntu>
+        {four.loading ? (
+          <SpinnerScoped />
+        ) : (
+          <>
+            <Space style={{ color: four.signalObj?.color }}>
+              {four.signalObj?.signal}
+            </Space>
+            <span style={{ color: four.signalObj?.color }}>
+              {four.signalObj !== null && <four.signalObj.icon />}{" "}
+            </span>
+          </>
+        )}
+      </GlanceWrapper>
+      <GlanceWrapper style={{ border: `1px solid ${day.signalObj?.border}` }}>
+        <Ubuntu>Medium Term</Ubuntu>
+
+        {day.loading ? (
+          <SpinnerScoped />
+        ) : (
+          <>
+            <Space style={{ color: day.signalObj?.color }}>
+              {day.signalObj?.signal}
+            </Space>
+            <span style={{ color: day.signalObj?.color }}>
+              {day.signalObj !== null && <day.signalObj.icon />}{" "}
+            </span>
+          </>
+        )}
+      </GlanceWrapper>
+      <GlanceWrapper style={{ border: `1px solid ${week.signalObj?.border}` }}>
+        <Ubuntu>Long Term</Ubuntu>
+
+        {week.loading ? (
+          <SpinnerScoped />
+        ) : (
+          <>
+            <Space style={{ color: week.signalObj?.color }}>
+              {week.signalObj?.signal}
+            </Space>
+            <span style={{ color: week.signalObj?.color }}>
+              {week.signalObj !== null && <week.signalObj.icon />}
+            </span>
+          </>
+        )}
+      </GlanceWrapper>
     </WrapperMarginY>
   );
 };
