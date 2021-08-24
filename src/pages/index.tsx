@@ -1,18 +1,16 @@
-import Navigation from "../components/Navigation";
+import { WrapperMarginY } from "../components/common/Wrapper";
 import RESTSection from "../components/RESTSection";
 import WebsocketSection from "../components/WebsocketSection";
 
 const Home = () => {
   return (
-    <div>
-      <Navigation />
-
-      <main>
+    <>
+      <WrapperMarginY>
         <WebsocketSection currency="usd" />
 
-        <RESTSection />
-      </main>
-    </div>
+        <RESTSection currency="BTCUSDT" />
+      </WrapperMarginY>
+    </>
   );
 };
 
