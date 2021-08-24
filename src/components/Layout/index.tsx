@@ -1,5 +1,5 @@
 import GlobalStyles from "../../styles/GlobalStyles";
-import Wrapper from "../common/Wrapper";
+import { Wrapper } from "../common/Wrapper";
 import Footer from "../Footer";
 import Header from "../Header";
 import { Container } from "./Layout.styles";
