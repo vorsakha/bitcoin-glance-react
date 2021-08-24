@@ -8,25 +8,30 @@ const defaultInterval = "4h";
 const defaultSymbol = "BTCUSDT";
 const defaultLimit = 120 * 2;
 
-interface StateType {
+interface RestObjType {
   open: string[];
   high: string[];
   low: string[];
   close: string[];
 }
+interface SignalType {
+  signal: string;
+  color: string;
+}
 
-const useRest = async (
+const useRest = (
   symbol: string = defaultSymbol,
   limit: number = defaultLimit,
   interval: string = defaultInterval
-): Promise<boolean | null> => {
-  const [restObj, setRestObj] = useState<StateType>({
+) => {
+  const [restObj, setRestObj] = useState<RestObjType>({
     open: [],
     high: [],
     low: [],
     close: [],
   });
-  const [isBull, setIsBull] = useState<boolean | null>(null);
+  const [signalObj, setSignal] = useState<SignalType | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const publicCall = async (
     path: string,
@@ -45,7 +50,9 @@ const useRest = async (
     }
   };
 
-  async function apiCall() {
+  const apiCall = async () => {
+    setLoading(true);
+
     const upperCaseSym = symbol.toUpperCase();
     const call: any = await publicCall("/v1/klines", {
       symbol: upperCaseSym,
@@ -65,30 +72,27 @@ const useRest = async (
       close.unshift(data[4]);
     });
 
-    setRestObj({
-      open: open,
-      high: high,
-      low: low,
-      close: close,
-    });
-  }
+    if (open.length !== 0) {
+      setRestObj({
+        open: open,
+        high: high,
+        low: low,
+        close: close,
+      });
 
-  useEffect(() => {
-    apiCall();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const ichimoku = getIchimoku({
-    close: restObj.close,
-    high: restObj.high,
-    low: restObj.low,
-  });
+      setLoading(false);
+    }
+  };
 
   // Glance status from ichimoku analysis
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getSignal = () => {
     try {
-      const kumo = ichimoku;
+      const kumo = getIchimoku({
+        close: restObj.close,
+        high: restObj.high,
+        low: restObj.low,
+      });
 
       // Signal parameters
       const bullish =
@@ -106,11 +110,11 @@ const useRest = async (
 
       // Return parameters results
       if (bullish) {
-        setIsBull(true);
+        setSignal({ signal: "📈Bullish Trend", color: "#37BC34" });
       } else if (bearish) {
-        setIsBull(false);
+        setSignal({ signal: "📉Bearish Trend", color: "#BC345B" });
       } else {
-        setIsBull(null);
+        setSignal({ signal: "Neutral Trend", color: "#333" });
       }
 
       return {
@@ -123,12 +127,23 @@ const useRest = async (
   };
 
   useEffect(() => {
-    getSignal();
+    async function asyncCall() {
+      await apiCall();
+    }
 
+    asyncCall();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return isBull;
+  useEffect(() => {
+    getSignal();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restObj]);
+
+  console.log(restObj);
+
+  return { signalObj, loading };
 };
 
 export default useRest;
