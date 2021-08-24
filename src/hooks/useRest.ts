@@ -141,8 +141,6 @@ const useRest = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restObj]);
 
-  console.log(restObj);
-
   return { signalObj, loading };
 };
 
