@@ -1,8 +1,9 @@
 import { Title, TitleH3 } from "../components/common/Title";
+import { WrapperMarginY } from "../components/common/Wrapper";
 
 const About = () => {
   return (
-    <div style={{ margin: "1rem 0" }}>
+    <WrapperMarginY>
       <Title>About</Title>
       <p>
         Bitcoin Glance calculates Bitcoin market history to get a glance at the
@@ -28,7 +29,7 @@ const About = () => {
         investment advice. Seek a duly licensed professional for investment
         advice.
       </p>
-    </div>
+    </WrapperMarginY>
   );
 };
 
