@@ -1,4 +1,5 @@
 import useRest from "../../hooks/useRest";
+import { Border } from "../common/Border";
 import { Space, Ubuntu } from "../common/Font";
 import { SpinnerScoped } from "../common/Spinner";
 import { Title } from "../common/Title";
@@ -16,6 +17,8 @@ const RESTSection = ({ currency }: { currency: string }) => {
 
       <GlanceWrapper style={{ border: `1px solid ${four.signalObj?.border}` }}>
         <Ubuntu>Short Term</Ubuntu>
+        <Border style={{ borderColor: `${four.signalObj?.border}` }} />
+
         {four.loading ? (
           <SpinnerScoped />
         ) : (
@@ -31,6 +34,7 @@ const RESTSection = ({ currency }: { currency: string }) => {
       </GlanceWrapper>
       <GlanceWrapper style={{ border: `1px solid ${day.signalObj?.border}` }}>
         <Ubuntu>Medium Term</Ubuntu>
+        <Border style={{ borderColor: `${day.signalObj?.border}` }} />
 
         {day.loading ? (
           <SpinnerScoped />
@@ -47,6 +51,7 @@ const RESTSection = ({ currency }: { currency: string }) => {
       </GlanceWrapper>
       <GlanceWrapper style={{ border: `1px solid ${week.signalObj?.border}` }}>
         <Ubuntu>Long Term</Ubuntu>
+        <Border style={{ borderColor: `${week.signalObj?.border}` }} />
 
         {week.loading ? (
           <SpinnerScoped />

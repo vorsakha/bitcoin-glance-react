@@ -12,7 +12,11 @@ export const Banner = styled.div`
   justify-content: center;
 `;
 export const WrapperMarginY = styled.div`
-  margin: 1rem 0;
+  margin: 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 1rem 0;
+  }
 `;
 export const CenterWrapper = styled.div`
   height: 100%;
