@@ -6,7 +6,7 @@ import { Title } from "../common/Title";
 import { WrapperMarginY } from "../common/Wrapper";
 import { GlanceWrapper } from "./RESTSection.style";
 
-const RESTSection = ({ currency }: { currency: "brl" | "usd" }) => {
+const RESTSection = ({ currency }: { currency: "BTCBRL" | "BTCUSDT" }) => {
   const four = useRest(currency);
   const day = useRest(currency, 240, "1d");
   const week = useRest(currency, 240, "1w");
