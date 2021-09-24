@@ -15,19 +15,6 @@ const defaultInterval = "4h";
 const defaultSymbol = "BTCUSDT";
 const defaultLimit = 120 * 2;
 
-interface RestObjType {
-  open: string[];
-  high: string[];
-  low: string[];
-  close: string[];
-}
-interface SignalType {
-  signal: string;
-  color: string;
-  icon: String & StyledComponentBase<IconType, any, {}, never>;
-  border: string;
-}
-
 const useRest = (
   symbol: string = defaultSymbol,
   limit: number = defaultLimit,
