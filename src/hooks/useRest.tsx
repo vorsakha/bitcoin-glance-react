@@ -6,8 +6,6 @@ import {
   BullishIcon,
   StableIcon,
 } from "../components/common/GlanceIcons";
-import { StyledComponentBase } from "styled-components";
-import { IconType } from "@react-icons/all-files/lib";
 
 // Rest
 const apiUrl = "https://api.binance.com/api";
