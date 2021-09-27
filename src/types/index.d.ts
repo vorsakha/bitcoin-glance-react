@@ -10,3 +10,13 @@ interface SignalType {
   icon: String & StyledComponentBase<IconType, any, {}, never>;
   border: string;
 }
+
+interface SignalTypes {
+  signalObj: {
+    signal: string;
+    color: string;
+    icon: String & StyledComponentBase<IconType, any, {}, never>;
+    border: string;
+  };
+  loading: boolean;
+}

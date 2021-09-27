@@ -17,9 +17,9 @@ const RESTSection = ({
   const dayCall = useRest(currency, 240, "1d");
   const weekCall = useRest(currency, 240, "1w");
 
-  const four = config.rest || fourCall;
-  const day = config.rest || dayCall;
-  const week = config.rest || weekCall;
+  const four: SignalTypes = config.rest || fourCall;
+  const day: SignalTypes = config.rest || dayCall;
+  const week: SignalTypes = config.rest || weekCall;
 
   return (
     <WrapperMarginY>

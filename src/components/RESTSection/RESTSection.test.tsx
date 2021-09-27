@@ -1,8 +1,14 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import RESTSection from ".";
+import { FcBullish as Icon } from "@react-icons/all-files/fc/FcBullish";
 
-const config: SignalType = { signal: "", border: "", color: "", icon: "" };
+const config = {
+  rest: {
+    loading: false,
+    signalObj: { signal: "", border: "", color: "", icon: Icon },
+  },
+};
 
 test("render navigation banner", () => {
   render(
