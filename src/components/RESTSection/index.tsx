@@ -6,10 +6,20 @@ import { Title } from "../common/Title";
 import { WrapperMarginY } from "../common/Wrapper";
 import { GlanceWrapper } from "./RESTSection.style";
 
-const RESTSection = ({ currency }: { currency: "BTCBRL" | "BTCUSDT" }) => {
-  const four = useRest(currency);
-  const day = useRest(currency, 240, "1d");
-  const week = useRest(currency, 240, "1w");
+const RESTSection = ({
+  currency,
+  config = {},
+}: {
+  currency: "BTCBRL" | "BTCUSDT";
+  config?: any;
+}) => {
+  const fourCall = useRest(currency);
+  const dayCall = useRest(currency, 240, "1d");
+  const weekCall = useRest(currency, 240, "1w");
+
+  const four = config.rest || fourCall;
+  const day = config.rest || dayCall;
+  const week = config.rest || weekCall;
 
   return (
     <WrapperMarginY>
