@@ -30,7 +30,7 @@ const RESTSection = ({
         <Border style={{ borderColor: `${four.signalObj?.border}` }} />
 
         {four.loading ? (
-          <SpinnerScoped />
+          <SpinnerScoped role="alert" />
         ) : (
           <>
             <Space style={{ color: four.signalObj?.color }}>
@@ -47,7 +47,7 @@ const RESTSection = ({
         <Border style={{ borderColor: `${day.signalObj?.border}` }} />
 
         {day.loading ? (
-          <SpinnerScoped />
+          <SpinnerScoped role="alert" />
         ) : (
           <>
             <Space style={{ color: day.signalObj?.color }}>
@@ -64,7 +64,7 @@ const RESTSection = ({
         <Border style={{ borderColor: `${week.signalObj?.border}` }} />
 
         {week.loading ? (
-          <SpinnerScoped />
+          <SpinnerScoped role="alert" />
         ) : (
           <>
             <Space style={{ color: week.signalObj?.color }}>
