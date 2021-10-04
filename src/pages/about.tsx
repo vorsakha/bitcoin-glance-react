@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Title, TitleH3 } from "../components/common/Title";
 import { WrapperMarginY } from "../components/common/Wrapper";
 

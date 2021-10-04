@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import { WrapperMarginY } from "../components/common/Wrapper";
 import RESTSection from "../components/RESTSection";
