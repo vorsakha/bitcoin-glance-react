@@ -5,17 +5,17 @@ import { Title } from "../common/Title";
 import { Price } from "./WebsocketSection.style";
 
 const WebsocketSection = ({ currency }: { currency: "brl" | "usd" }) => {
-  const websocket = useWebsocket(currency);
+  const { color, price } = useWebsocket(currency);
 
   return (
     <>
       <Title>
         Updated Price:{" "}
-        <Price data-testid="price" style={{ color: websocket.color }}>
-          {websocket.price === 0 ? (
+        <Price data-testid="price" style={{ color: color }}>
+          {price === 0 ? (
             <SpinnerScoped role="alert" />
           ) : (
-            formatCurrency(currency, websocket.price)
+            formatCurrency(currency, price)
           )}
         </Price>
       </Title>
